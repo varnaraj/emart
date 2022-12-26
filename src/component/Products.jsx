@@ -10,7 +10,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea, CardActions } from "@mui/material";
 import Skeleton from "react-loading-skeleton";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
+
 import "react-loading-skeleton/dist/skeleton.css";
 
 function Products() {
@@ -167,7 +169,7 @@ function Products() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions sx={{ ml: 10, mt: -2, mb: 1.5 }}>
-                    <Link href={"/products/" + product.id}>
+                    <Link to={"/products/" + product.id}>
                       <Button variant="contained" size="big" color="primary">
                         Buy Now
                       </Button>

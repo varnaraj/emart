@@ -9,7 +9,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 function Navbar() {
@@ -40,7 +42,7 @@ function Navbar() {
         }}
       >
         <Box>
-          <Link href="/">
+          <Link to="/">
             <Button>
               <Typography align="center" ml={3} fontSize={30} color={"black"}>
                 <b>LA COLLECTION</b>
@@ -57,7 +59,7 @@ function Navbar() {
         // }}
         >
           <Stack spacing={2} direction="row">
-            <Link href="/">
+            <Link to="/">
               <Button
                 sx={{
                   fontSize: 20,
@@ -69,7 +71,7 @@ function Navbar() {
                 Home
               </Button>
             </Link>
-            <Link href="/products">
+            <Link to="/products">
               <Button
                 sx={{
                   fontSize: 20,
@@ -81,7 +83,7 @@ function Navbar() {
                 Products
               </Button>
             </Link>
-            <Link href="/about">
+            <Link to="/about">
               <Button
                 sx={{
                   fontSize: 20,
@@ -93,7 +95,7 @@ function Navbar() {
                 About
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link to="/contact">
               <Button
                 sx={{
                   fontSize: 20,
@@ -113,7 +115,7 @@ function Navbar() {
           }}
         >
           <Stack direction="row" spacing={2}>
-            <Link href="/login">
+            <Link to="/login">
               <Button
                 size="large"
                 sx={{ color: "#263238", textTransform: "capitalize" }}
@@ -130,7 +132,7 @@ function Navbar() {
                 Login
               </Button>
             </Link>
-            <Link href="/register">
+            <Link to="/register">
               <Button
                 size="large"
                 sx={{ color: "#263238", textTransform: "capitalize" }}
@@ -147,7 +149,7 @@ function Navbar() {
                 Register
               </Button>
             </Link>
-            <Link href="/cart">
+            <Link to="/cart">
               <Button
                 size="large"
                 sx={{ color: "#263238", textTransform: "capitalize" }}

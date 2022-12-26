@@ -8,7 +8,9 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import StarIcon from "@mui/icons-material/Star";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
+
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch } from "react-redux";
@@ -177,7 +179,7 @@ function Product() {
               >
                 Add to Cart
               </Button>
-              <Link href="/cart">
+              <Link to="/cart">
                 <Button
                   size="large"
                   sx={{

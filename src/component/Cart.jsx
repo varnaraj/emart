@@ -12,14 +12,31 @@ import { CardActionArea, CardActions } from "@mui/material";
 import Skeleton from "react-loading-skeleton";
 import Link from "@mui/material/Link";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useSelector } from "react-redux";
+import { addCart } from "../redux/action";
 import { Fullscreen } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { delCart } from "../redux/action";
+
 function Cart() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
+  // const state = useSelector((state) => state.cart.products);
+  const state = useSelector((state) => state.handleCart);
   let componentMounted = true;
 
+  const dispatch = useDispatch();
+
+  const addProduct = (product) => {
+    console.log(product);
+    dispatch(addCart(product));
+  };
+
+  const delProduct = (product) => {
+    console.log(product);
+    dispatch(delCart(product));
+  };
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
@@ -92,7 +109,7 @@ function Cart() {
               height: 120,
             }}
           >
-            {filter.map((product) => {
+            {state.map((product) => {
               return (
                 <Box sx={{ flexGrow: 1, mb: 2, mt: 2 }}>
                   <Grid container spacing={5}>
@@ -153,7 +170,7 @@ function Cart() {
                             }}
                           >
                             <typography>
-                              {product.qty}* $ {product.price}=
+                              {product.qty}* $ {product.price}= ${" "}
                               {product.qty * product.price}
                             </typography>
                           </Box>
@@ -176,7 +193,7 @@ function Cart() {
                               }}
                             >
                               <Button
-                                //    onClick={() => addProduct(product)}
+                                onClick={() => addProduct(product)}
                                 size="large"
                                 sx={{
                                   color: "#263238",
@@ -197,7 +214,7 @@ function Cart() {
 
                             <Box>
                               <Button
-                                //    onClick={() => addProduct(product)}
+                                onClick={() => delProduct(product)}
                                 size="large"
                                 sx={{
                                   color: "#263238",
@@ -228,23 +245,25 @@ function Cart() {
             })}
           </div>
         </div>
-        <div>
-          <Button
-            //    onClick={() => addProduct(product)}
-            size="large"
-            sx={{ color: "#263238", textTransform: "capitalize" }}
-            variant="outlined"
-            style={{
-              // borderRadius: 35,
-              borderColor: "#000000",
-              //backgroundColor: "#000000",
-              // padding: "18px 36px",
-              // fontSize: "18px",
-            }}
-          >
-            Add to Cart
-          </Button>
-        </div>
+        <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div>
+            <Button
+              //    onClick={() => addProduct(product)}
+              size="large"
+              sx={{ color: "#263238", textTransform: "capitalize" }}
+              variant="outlined"
+              style={{
+                // borderRadius: 35,
+                borderColor: "#000000",
+                //backgroundColor: "#000000",
+                // padding: "18px 36px",
+                // fontSize: "18px",
+              }}
+            >
+              Proceed to Checkout
+            </Button>
+          </div>
+        </Box>
       </div>
     );
   };
